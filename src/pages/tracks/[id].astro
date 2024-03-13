@@ -1,28 +1,26 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import { db } from "astro:db";
-import { Tracks } from "astro:db";
+import { db } from "@/db";
+import Layout from "@/layouts/main.astro";
 
 export async function getStaticPaths() {
-    const tracks = await db.select().from(Tracks);
+  const tracks = await db.query.tracks.findMany();
 
-    return tracks.map((track) => ({
-        params: {
-            id: track.id.toString(),
-            name: track.name
-        },
-        props: {
-            id: track.id,
-            name: track.name
-        }
-    }));
+  return tracks.map((track) => ({
+    params: {
+      id: track.id.toString(),
+      name: track.name,
+    },
+    props: {
+      id: track.id,
+      name: track.name,
+    },
+  }));
 }
 
-const track = Astro.props
-console.log(track)
+const track = Astro.props;
 ---
 
 <Layout title={track.name}>
-    <h1>Track: {track.name}</hjson>
-    <p>Track ID: {track.id}</p>
+  <h1>Track: {track.name}</h1>
+  <p>Track ID: {track.id}</p>
 </Layout>
