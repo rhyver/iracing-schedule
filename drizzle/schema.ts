@@ -8,7 +8,7 @@ export const cars = sqliteTable("cars", {
 export const tracks = sqliteTable("tracks", {
   id: integer("id").notNull().primaryKey(),
   name: text("name").notNull(),
-  short_name: text("short_name").notNull(),
+  short_name: text("short_name"),
 });
 
 export const track_configurations = sqliteTable("track_configurations", {

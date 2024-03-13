@@ -9,7 +9,7 @@ const tracks = await db.query.tracks.findMany();
   {
     tracks.map((track) => (
       <a href={`/tracks/${track.id}`}>
-        <li>
+        <li class="">
           {track.id} - {track.name}
         </li>
       </a>

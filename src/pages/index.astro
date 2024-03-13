@@ -1,8 +1,6 @@
 ---
 // Component Imports
 
-import AstroButton from "../components/Button.astro";
-import { Button } from "@/components/ui/button";
 import Layout from "@/layouts/main.astro";
 import { db } from "@/db";
 import "@/globals.css";
@@ -17,17 +15,12 @@ const activeWeek = await db.query.season_weeks.findFirst({
 });
 ---
 
-<Layout>
-  <div class="grid place-items-center h-screen content-center bg-background">
+<Layout title={`Week ${activeWeek?.week_number}`}>
+  <div class="grid place-items-center h-screen content-center">
     <h1
       class="bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 inline-block text-transparent bg-clip-text text-6xl"
     >
       Week {activeWeek?.week_number}
     </h1>
-
-    <Button>Hello World</Button>
-    <a href="/markdown-page" class="p-4 underline"
-      >Markdown is also supported...</a
-    >
   </div>
 </Layout>
