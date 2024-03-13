@@ -10,9 +10,13 @@
     "astro": "astro",
     "drizzle:generate": "pnpm drizzle-kit generate:sqlite",
     "drizzle:migrate": "pnpm tsx drizzle/migrate.ts",
+    "drizzle:migrate:prod": "pnpm tsx drizzle/migrate.prod.ts",
     "drizzle:studio": "pnpm drizzle-kit studio",
+    "drizzle:studio:prod": "pnpm drizzle-kit studio --config drizzle.prod.config.ts",
     "drizzle:push": "pnpm drizzle-kit push:sqlite",
-    "prettier": "prettier --write ./src --plugin=prettier-plugin-astro"
+    "turso:sync": "pnpm tsx drizzle/sync.ts",
+    "prettier": "prettier --write ./src --plugin=prettier-plugin-astro",
+    "clean": "rm local.db*"
   },
   "dependencies": {
     "@astrojs/check": "^0.5.9",

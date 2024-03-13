@@ -1,8 +1,8 @@
 {
   "version": "5",
   "dialect": "sqlite",
-  "id": "a828b623-dd35-4242-a49d-5772c3b1bf91",
-  "prevId": "b90e7ae5-159d-42dc-b9a1-bd482612f265",
+  "id": "1a1c5d42-16e8-44df-b3f6-3ab954532eae",
+  "prevId": "a828b623-dd35-4242-a49d-5772c3b1bf91",
   "tables": {
     "cars": {
       "name": "cars",
@@ -475,13 +475,6 @@
           "type": "text",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": false
-        },
-        "short_name": {
-          "name": "short_name",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false,
           "autoincrement": false
         }
       },

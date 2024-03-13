@@ -1,0 +1,1 @@
+ALTER TABLE tracks ADD `short_name` text;
