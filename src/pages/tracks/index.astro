@@ -1,14 +1,18 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import { neon } from '@neondatabase/serverless';
+import { db } from "@/db";
+import Layout from "@/layouts/main.astro";
 
-const sql = neon(import.meta.env.DATABASE_URL);
-const response: {id: number, name: string}[] = await sql`SELECT * FROM tracks` as {id: number, name: string}[];
+const tracks = await db.query.tracks.findMany();
 ---
 
 <Layout title="Tracks">
-
-    {response.map((track) => (
-        <a href={`/tracks/${track.id}`}><li>{track.id} - {track.name}</li></a>
-    ))}
+  {
+    tracks.map((track) => (
+      <a href={`/tracks/${track.id}`}>
+        <li class="">
+          {track.id} - {track.name}
+        </li>
+      </a>
+    ))
+  }
 </Layout>

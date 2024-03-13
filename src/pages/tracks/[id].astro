@@ -1,29 +1,26 @@
 ---
-import type { GetStaticPaths } from "astro";
-import Layout from '../../layouts/Layout.astro';
-import { neon } from '@neondatabase/serverless';
+import { db } from "@/db";
+import Layout from "@/layouts/main.astro";
 
 export async function getStaticPaths() {
-    const sql = neon(import.meta.env.DATABASE_URL);
-    const response: {id: number, name: string}[] = await sql`SELECT * FROM tracks` as {id: number, name: string}[];
+  const tracks = await db.query.tracks.findMany();
 
-    return response.map((track) => ({
-        params: {
-            id: track.id.toString(),
-            name: track.name
-        },
-        props: {
-            id: track.id,
-            name: track.name
-        }
-    }));
+  return tracks.map((track) => ({
+    params: {
+      id: track.id.toString(),
+      name: track.name,
+    },
+    props: {
+      id: track.id,
+      name: track.name,
+    },
+  }));
 }
 
-const track = Astro.props
-console.log(track)
+const track = Astro.props;
 ---
 
 <Layout title={track.name}>
-    <h1>Track: {track.name}</hjson>
-    <p>Track ID: {track.id}</p>
+  <h1>Track: {track.name}</h1>
+  <p>Track ID: {track.id}</p>
 </Layout>
